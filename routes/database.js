@@ -51,7 +51,7 @@ module.exports = async function (fastify, opts) {
 				// TODO: Validate inpute Data
 				const { sku, cost, price, pricebook } = request.body;
 				const pool = await fastify.mssql.pool.connect();
-				const query = `INSERT INTO [x].[productsPrice] (ProductSKU,ProductCost,ProductPrice,PriceBookID) VALUES ('@sku',@cost,@price,'@pricebook')`;
+				const query = `INSERT INTO [x].[productsPrice] (ProductSKU,ProductCost,ProductPrice,PriceBookID) VALUES (@sku,@cost,@price,@pricebook)`;
 				const res = await pool
 					.request()
 					.input('sku', fastify.mssql.sqlTypes.NVarChar(40), sku)
@@ -59,7 +59,7 @@ module.exports = async function (fastify, opts) {
 					.input('price', fastify.mssql.sqlTypes.Money, price)
 					.input('pricebook', fastify.mssql.sqlTypes.NVarChar(40), pricebook)
 					.query(query);
-				return reply.code(200).send({ msg: res.rowsAffected });
+				return { msg: res.rowsAffected };
 			} catch (err) {
 				return err;
 			}
@@ -147,7 +147,7 @@ module.exports = async function (fastify, opts) {
 							if (err) {
 								throw new Error(err);
 							} else {
-								return reply.code(200).send({ msg: totalrows });
+								return { msg: totalrows };
 							}
 						});
 					});

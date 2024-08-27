@@ -1,22 +1,21 @@
 # Getting Started with [Fastify-CLI](https://www.npmjs.com/package/fastify-cli)
+
 This project was bootstrapped with Fastify-CLI.
+
+You will need AWS CLI and AWS SAM for the Deployment
 
 ## Available Scripts
 
 In the project directory, you can run:
 
-### `npm run dev`
+### `sam build`
 
-To start the app in dev mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+To build for AWS Lambda
+! Do this before Deploy
 
-### `npm start`
+### `sam deploy --stack-name fastify-app`
 
-For production mode
-
-### `npm run test`
-
-Run the test cases.
+For deployment to AWS lambda
 
 ## Learn More
 

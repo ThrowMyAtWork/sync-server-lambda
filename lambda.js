@@ -1,4 +1,4 @@
-const awsLambdaFastify = require('aws-lambda-fastify');
+const awsLambdaFastify = require('@fastify/aws-lambda');
 const fastify = require('fastify');
 const app = require('./app');
 
